@@ -1,0 +1,62 @@
+body {
+    color: #000000;
+    font-family: "Computer Modern Serif", Arial,'Times New Roman', sans-serif;*/
+    width: 1200px;
+    margin: 0 auto;
+    background-color: #FFDBAC;
+    padding: 20px 20px 20px 20px;
+    #border: 2px solid black;
+    background:linear-gradient( rgba(255, 255, 255, 0.7) 100%, rgba(0, 0, 0, 1)100%),url("images/maintheme.png");
+
+}
+
+h1 {
+    color: rebeccapurple;
+}
+
+h2 {
+    #font-family: MaPolice;
+    font-size: 17px;
+}
+
+a {
+    color: #047FFF;
+    text-decoration: none;
+}
+
+.warning {
+    font-weight: bold;
+    color: red;
+}
+
+@font-face
+{
+    font-family: 'MaPolice';
+    src:url("images/AlexBrush-Regular.ttf")
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.center {
+    text-align:center;
+}
+
+.projetActif {
+    color: red;
+    font-weight: bold;
+}
+
+.encadre{
+    border: 2px solid black;
+    padding: 4px
+}
+
+.spaceout{
+    line-height: 1.3
+}
