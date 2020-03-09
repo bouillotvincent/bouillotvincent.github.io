@@ -11,8 +11,13 @@ body {
 }
 
 h1 {
-    color: rebeccapurple;
+    color: green;
+    text-align: center;
+    font-family: Mathinfo;
+    font-size: 67px;
+    letter-spacing: 0.01em;
 }
+
 
 h2 {
     #font-family: MaPolice;
@@ -29,10 +34,19 @@ a {
     color: red;
 }
 
+.button {
+    color: crimson;
+    border-style: solid;
+    border-width: 2px 10px 4px 20px;
+    border-radius: 15px;
+    border-color: #CC1199;
+    font-size : 1.7em;
+}
+
 @font-face
 {
-    font-family: 'MaPolice';
-    src:url("images/AlexBrush-Regular.ttf")
+    font-family: 'Mathinfo';
+    src:url("fonts/Blox2.ttf")
 }
 
 .left {
@@ -59,4 +73,9 @@ a {
 
 .spaceout{
     line-height: 1.3
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
 }
