@@ -32,15 +32,25 @@ a {
 .warning {
     font-weight: bold;
     color: red;
+    text-align:center;
+    padding:10px;
 }
 
 .button {
-    color: crimson;
+    color: black;
     border-style: solid;
-    border-width: 2px 10px 4px 20px;
-    border-radius: 15px;
-    border-color: #CC1199;
+    border-width: 3px 3px 3px 3px;
+    border-radius: 5px;
+    border-color: #000000;
     font-size : 1.7em;
+    text-align: center;
+    width:50%;
+}
+
+.container{    
+    display: flex;
+	flex-direction: column;
+    align-items: center;
 }
 
 @font-face
@@ -59,6 +69,10 @@ a {
 
 .center {
     text-align:center;
+}
+
+.showInfo:hover{
+    
 }
 
 .projetActif {
