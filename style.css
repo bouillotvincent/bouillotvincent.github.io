@@ -10,6 +10,22 @@ body {
 
 }
 
+table
+{
+    border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
+    text-align: center;
+}
+td
+{
+    border: 1px solid black;
+}
+
+th
+{
+    font-style: italic;
+    padding:10px 10px 2px 10px;
+}
+
 h1 {
     color: green;
     text-align: center;
