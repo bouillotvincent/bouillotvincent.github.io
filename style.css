@@ -1,13 +1,13 @@
 body {
     color: #000000;
-    font-family: "Computer Modern Serif", Arial,'Times New Roman', sans-serif;*/
-    width: 1200px;
+    font-family: "Computer Modern Serif", Arial,'Times New Roman', sans-serif;
+    /*width: 1200px;*/
     margin: 0 auto;
     background-color: #FFDBAC;
     padding: 20px 20px 20px 20px;
-    #border: 2px solid black;
+    /*border: 2px solid black;*/
     background:linear-gradient( rgba(255, 255, 255, 0.7) 100%, rgba(0, 0, 0, 1)100%),url("images/maintheme.png");
-
+    font-size: 1em;
 }
 
 table
@@ -30,13 +30,12 @@ h1 {
     color: green;
     text-align: center;
     font-family: Mathinfo;
-    font-size: 67px;
+    font-size: 4.5em;
     letter-spacing: 0.01em;
 }
 
 
 h2 {
-    #font-family: MaPolice;
     font-size: 17px;
 }
 
