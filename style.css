@@ -107,9 +107,13 @@ a {
     
 }
 
-.projetActif {
+.deadline {
     color: red;
     font-weight: bold;
+}
+
+.deadline::before {
+    content:'-- A rendre pour le ';
 }
 
 .encadre{
@@ -199,3 +203,4 @@ input[type="checkbox"]:checked::before {
 #contenu {
 	flex-grow:1; /* 4 */
 }
+
