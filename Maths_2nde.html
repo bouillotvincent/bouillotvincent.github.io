@@ -9,8 +9,8 @@
         <title> Maths Seconde - Vincent BOUILLOT </title>
     </head>
     <body>
-        <!-- Corps de la page -->
-        <div id=top></div>
+    <div id="page">
+    <div id="contenu">
         <h1>Seconde Maths</h1>
         
         <p class="warning"> Ce site est en construction</p>
@@ -21,45 +21,76 @@
             <li> Communiquer avec <a href="https://discordapp.com/channels/687757236390330383/687757236394524698" targe="_blank">Discord</a> en temps de Coronavirus</li>            
         </ul>
         
-        <h2>Cours</h2>
-        <ul>
-            <li>Chapitre 10 : Fonctions de référence</li>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Séance 1</th>
-                            <th>Séance 2</th>
-                            <th>Séance 3</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                       <td><a href="files/M2/C10/Exo1/Intro_fonctions_affines.pdf" target="_blank">Intro</a><br><a href="files/M2/C10/Exo1/Intro_fonctions_affines_corrige.pdf">Corrigé</a>
-                        </td>
-                       <td></td>
-                       <td></td>
-                    </tr>
-                    <tr>
-                       <td><a href="files/M2/C10/Cours/C10_p1_p2.pdf" target="_blank">Cours</a></td>
-                       <td><a href="files/M2/C10/Cours/C10_p1_p2.pdf" target="_blank">Fin cours</a><br><a href="files/M2/C10/Cours/C10_p3.pdf" target="_blank">Cours</a></td>
-                       <td>Cours</td>
-                    </tr>
-                    <tr>
-                       <td></td>
-                       <td><a href="files/M2/C10/Exo2/Expression_Fonction_Affine_Enonce.pdf"target="_blank">Exo 1</a><br><a href="#top">Corrigé</a></td>
-                       <td>Exo 1</td>
-                    </tr>
-                    <tr>
-                       <td></td>
-                       <td><a href="files/M2/C10/Exo3/Calcul_Fonction_Affine_Enonce.pdf"target="_blank">Exo 2</a><br><a href="#top">Corrigé</a></td>
-                       <td>Exo 2</td>
-                    </tr>
-                    </tbody>
-                </table>
-            <br>
-            <li>Information chiffrée : à ajouter
-            </li>
-        </ul>
+        <h2>Séquences</h2>
+        <label for="checkB" id="chap"> 10 : Fonctions de référence</label>
+        <input id="checkB" type="checkbox" checked>
+        <table class="sequence">
+            <thead>
+                <tr>
+                    <th>Séance 1</th>
+                    <th>Séance 2</th>
+                    <th>Séance 3</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><a href="files/M2/C10/Exo1/Intro_fonctions_affines.pdf" target="_blank">Intro</a><br><a href="files/M2/C10/Exo1/Intro_fonctions_affines_corrige.pdf">Corrigé</a>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><a href="files/M2/C10/Cours/C10_p1_p2.pdf" target="_blank">Cours</a></td>
+                <td><a href="files/M2/C10/Cours/C10_p1_p2.pdf" target="_blank">Fin cours</a><br><a href="files/M2/C10/Cours/C10_p3.pdf" target="_blank">Cours</a></td>
+                <td>Cours</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><a href="files/M2/C10/Exo2/Expression_Fonction_Affine_Enonce.pdf"target="_blank">Exo 1</a><br><a href="#top">Corrigé</a></td>
+                <td>Exo 1</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><a href="files/M2/C10/Exo3/Calcul_Fonction_Affine_Enonce.pdf"target="_blank">Exo 2</a><br><a href="#top">Corrigé</a></td>
+                <td>Exo 2</td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <label for="checkB" id="chap"> 11 : Information chiffrée</label>
+        <input id="checkB" type="checkbox" >
+        <table class="sequence">
+            <thead>
+                <tr>
+                    <th>Séance 1</th>
+                    <th>Séance 2</th>
+                    <th>Séance 3</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Intro</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Cours</td>
+                <td>Cours</td>
+                <td>Cours</td>
+            </tr>
+            <tr>
+                <td>Exo 1</td>
+                <td>Exo 1</td>
+                <td>Exo 1</td>
+            </tr>
+            <tr>
+                <td>Exo 2</td>
+                <td>Exo 2</td>
+                <td>Exo 2</td>
+            </tr>
+            </tbody>
+        </table>
+
         
         <h2>Exercices corrigés</h2>
                
@@ -69,14 +100,13 @@
         </ul>        
 
     
-    <footer>
+    </div>        
+    <div id=footer>
         <p>
-            <a href="index.html">Accueil</a>&nbsp;|&nbsp;<a class="right" href=#top>Haut de page</a>
-        </p>
-        <p>
-            
-        </p>        
-    </footer>
+            <a href="index.html" id="footer">Accueil</a>&nbsp;|&nbsp;<a href=#top>Haut de page</a>
+        </p>     
+    </div>
+    </div>
     </body>
     
 </html>
