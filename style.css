@@ -12,8 +12,9 @@ body {
 
 table
 {
-    border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
+    border-collapse: collapse;
     text-align: center;
+    font-size: 1em;
 }
 td
 {
@@ -27,7 +28,7 @@ th
 }
 
 h1 {
-    color: green;
+    color: darkgreen;
     text-align: center;
     font-family: Mathinfo;
     font-size: 4.5em;
@@ -59,8 +60,26 @@ a {
     border-color: #000000;
     font-size : 1.7em;
     text-align: center;
+    margin-bottom:1em;
     width:50%;
 }
+
+.button:hover {
+    color: #FFFFFF;
+    border-style: solid;
+    border-width: 3px 3px 3px 3px;
+    border-radius: 5px;
+    border-color: #000000;
+    font-size : 1.7em;
+    text-align: center;
+    margin-bottom:1em;
+    background-color: black;
+    box-shadow: 2px 5px 5px grey;
+    width:50%;
+}
+
+
+
 
 .container{    
     display: flex;
@@ -107,4 +126,84 @@ a {
 footer{
     position: absolute;
     bottom: 0;
+}
+
+
+input[type=checkbox] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+}
+
+/*
+input[type=checkbox] {
+  vertical-align: bottom;
+    content:'+';
+    color:red;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  background: black;
+}
+*/
+
+input[type=checkbox] {
+  vertical-align: bottom;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: 50%;
+  width: 2.05em;
+  height: 2.05em;
+  background: darkgreen; 
+}
+
+input[type="checkbox"]::before {
+    content: '+';
+    font-size: 3em;
+    font-weight: bold;
+    display: block;
+    color: cornsilk;
+    position: relative;
+    left: 0px;
+    top: -5px;
+    transform: rotate(0.5turn);
+}
+
+input[type="checkbox"]:checked {
+  background: darkgreen;
+  margin:0px;
+  left: 3px;
+  top: 3px;
+  position: relative;}
+
+input[type="checkbox"]:checked::before {
+    content: '-';
+    font-size: 3em;
+    font-weight: bold;
+    display: block;
+    color: cornsilk;
+    position: relative;
+    left: -3px;
+    top: -5px;
+    /*transform: rotate(0.125turn);
+    transition-property: transform;
+    transition-duration: 0.1s*/
+}
+
+.sequence{
+    display:none;
+}
+
+#checkB:checked + .sequence {
+    display:block;
+}
+
+#chap::before {
+    content : 'Chapitre'
 }
