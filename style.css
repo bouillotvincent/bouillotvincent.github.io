@@ -110,6 +110,13 @@ a {
 .deadline {
     color: red;
     font-weight: bold;
+    animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+      opacity: 0;
+    }
 }
 
 .deadline::before {
