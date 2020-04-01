@@ -113,6 +113,10 @@ a {
     animation: blinker 2s linear infinite;
 }
 
+.deadline_passed {
+    color: black;
+}
+
 @keyframes blinker {
     50% {
       opacity: 0;
@@ -121,6 +125,10 @@ a {
 
 .deadline::before {
     content:'-- A rendre pour le ';
+}
+
+.deadline_passed::before {
+    content:'-- Rendu le ';
 }
 
 .encadre{
