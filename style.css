@@ -113,6 +113,12 @@ a {
     animation: blinker 2s linear infinite;
 }
 
+.nouveau {
+    color: red;
+    font-weight: bold;
+    animation: blinker 2s linear infinite;
+}
+
 .deadline_passed {
     color: black;
 }
