@@ -9,6 +9,6 @@ q = 7
 #
 """ fin fonction estDivisiblePar """
 
-print(DivisiblePar(18, 3))
-print(DivisiblePar(100, 50))
-print(DivisiblePar(101, 45))
+print(estDivisiblePar(18, 3))
+print(estDivisiblePar(100, 50))
+print(estDivisiblePar(101, 45))
