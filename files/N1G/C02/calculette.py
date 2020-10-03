@@ -1,5 +1,5 @@
 from tkinter import *
-from exercice5_7_corrige import bin2dec, dec2bin
+from exercice5_7 import bin2dec, dec2bin
 
 class calculatrice(Tk):
     _listOp = ['+', '-', '*']

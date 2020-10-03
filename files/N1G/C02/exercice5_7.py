@@ -20,10 +20,12 @@ def bin2dec(nbin):
     """
     nbin = nbin[2:]   # nombre binaire
     L = len(nbin)-1
+    nombreDec = 0
 
     for bit in nbin:
-        nombreDec = ''
-        L = ''
+        nombreDec = 0
+        L = 0
+    
     assert(nombreDec == int(nbin,2))  # test : le nombre trouvé est-il le nombre attendu?
     return nombreDec
 
@@ -40,6 +42,10 @@ def dec2bin(n):
 
 if __name__ == '__main__':
 
+    val = '2201010011'  # chaine à tester
+    print(val + 'est un nombre binaire valide.', estBinaire(val)) # doit être False
+    assert(estBinaire(val)==False)
+
     val = '0b21210011'  # chaine à tester
     print(val + 'est un nombre binaire valide.', estBinaire(val)) # doit être False
     assert(estBinaire(val)==False)
@@ -49,10 +55,6 @@ if __name__ == '__main__':
     assert(estBinaire(val)==False)
 
     val = '0x01010011'  # chaine à tester
-    print(val + 'est un nombre binaire valide.', estBinaire(val)) # doit être False
-    assert(estBinaire(val)==False)
-
-    val = '2201010011'  # chaine à tester
     print(val + 'est un nombre binaire valide.', estBinaire(val)) # doit être False
     assert(estBinaire(val)==False)
 
