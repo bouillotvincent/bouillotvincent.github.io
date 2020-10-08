@@ -50,6 +50,11 @@ a {
     padding:10px;
 }
 
+gras {
+    font-weight: bold;
+}
+
+
 .button {
     color: black;
     border-style: solid;
