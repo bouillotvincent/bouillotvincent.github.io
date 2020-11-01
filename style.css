@@ -47,7 +47,6 @@ a {
     font-weight: bold;
     color: red;
     text-align:center;
-    padding:10px;
 }
 
 gras {
@@ -152,7 +151,8 @@ gras {
 
 .encadre{
     border: 2px solid black;
-    padding: 4px
+    padding: 4px;
+    line-height: 140%
 }
 
 .spaceout{
