@@ -35,7 +35,7 @@ h1 {
 
 
 h2 {
-    font-size: 17px;
+    font-size: 1.1em;;
 }
 
 a {
@@ -46,7 +46,7 @@ a {
 .warning {
     font-weight: bold;
     color: red;
-    text-align:center;
+    /*text-align:center;*/
 }
 
 gras {
@@ -238,3 +238,7 @@ input[type="checkbox"]:checked::before {
 	flex-grow:1; /* 4 */
 }
 
+label{
+    font-weight: bold;
+    font-size: 1.1em;
+}
