@@ -53,7 +53,6 @@ gras {
     font-weight: bold;
 }
 
-
 .button {
     color: black;
     border-style: solid;
@@ -164,6 +163,17 @@ footer{
     bottom: 0;
 }
 
+
+.box {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;    
+}
+
+/*.box>contenu {
+    flex: 1 1 160px;
+}*/
 
 input[type=checkbox] {
     -webkit-appearance: none;
