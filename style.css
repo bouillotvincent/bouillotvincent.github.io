@@ -200,9 +200,9 @@ input[type="checkbox"]::before {
     display: block;
     color: cornsilk;
     position: relative;
-    left: -1px;
-    top: -5px;
-    transform: rotate(0.5turn);
+    left: -7%;
+    top: -30%;
+    transform: rotate(.5turn);
 }
 
 input[type="checkbox"]:checked {
@@ -219,8 +219,8 @@ input[type="checkbox"]:checked::before {
     display: block;
     color: cornsilk;
     position: relative;
-    left: -4px;
-    top: -5px;
+    left: -15%;
+    top: -20%;
     /*transform: rotate(0.125turn);
     transition-property: transform;
     transition-duration: 0.1s*/
