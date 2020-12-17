@@ -151,8 +151,8 @@ class Application(Tk):
         self.sv = StringVar()
         self.ent = Entry(self, textvariable = self.sv, validate = "all", validatecommand = (okCmd, '%P'))
         self.ent.grid(row = 4, column = 0, columnspan = 4, sticky='EW', padx = 20)
-        # self.lab = Label(self, text = '')
-        # self.lab.grid(row = 4, column = 5)
+        self.lab = Label(self, text = 'Entrez vos arbres sous la forme [[SOUS-ARBRE GAUCHE]valeur[SOUS-ARBRE DROIT]]')
+        self.lab.grid(row = 5, column = 0, columnspan = 4)
 
     def callback(self, value):
         #self.ent.configure(text = self.sv + 'z')
@@ -523,14 +523,6 @@ def parcoursInfixe2(a):
     parcoursInfixe2(a.gauche)
     print(a.valeur)
     parcoursInfixe2(a.droit)
-
-def affiche(A):
-    if A is None: return
-    print("[", end="")
-    affiche(A.gauche)
-    print(A.valeur, end="")
-    affiche(A.droit)
-    print("]", end="")
 
 def etatArbre(txt):
     """ counts the number of opening '[' and closing ']':
