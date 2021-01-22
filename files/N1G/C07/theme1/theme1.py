@@ -8,9 +8,11 @@ print(laClasse[0][0]) # affiche le premier attribut du premier élève du tablea
 def comptage(T: list)-> int:
     '''
     Cette fonction compte le nombre d'élèves ayant moins de 16 ans.
-    T : tableau d'élève d'une classe au format [(nom1, age1), (nom2, age2) ...]
-    Renvoie un entier.
+    Entrée : tableau d'élève d'une classe au format [(nom1, age1), (nom2, age2) ...]
+    Sortie : Renvoie un entier.
     '''
+    for eleve in T:
+        pass  # a supprimer
     # A Completer
     # ....
     # ....
@@ -21,6 +23,10 @@ def preAdo(T: list)-> str:
     '''
     A compléter
     '''
+    agePlusJeune = 10000
+    nomPlusJeune = 'Ramses II'
+    for eleve in T:
+        pass  # a supprimer
     # A Completer
     # ....
     # ....
@@ -57,5 +63,5 @@ x = [i for i in range(len(alphabet))]
 # Exemple ci-dessous
 y = [random.randint(1,20) for i in range(len(alphabet)) ]
 
-bar(x, y, tick_label=alphabet)
-show()
+#bar(x, y, tick_label=alphabet)
+#show()
