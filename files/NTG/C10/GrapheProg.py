@@ -29,7 +29,7 @@ class GrapheDico:
     def ajouteSommet(self, s):
         """ Ajoute un sommet au Graphe """
         if s not in self.adj:
-            self.adj[s] = set()
+            self.adj[s] = list()
 
     def ajouteArc(self, s1, s2):
         """ Ajoute un arc entre deux sommets s1 et s2. Crée le sommet s1 ou s2 si celui-ci n'existe pas."""
