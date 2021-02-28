@@ -48,7 +48,7 @@ class Application(Tk):
     def __init__(self, G, arrow = True, width = 500, height = 500, weight = False):
         Tk.__init__(self)        # constructeur de la classe parente
         self.can = Canvas(self, width = width, height = height, bg ="white")
-        self.can.grid(row = 2, column = 0, columnspan = 3)
+        self.can.grid(row = 0, rowspan = 78, column = 0)
         self.can.update()
         self.a = {}
         self.params = G
@@ -59,21 +59,24 @@ class Application(Tk):
         else: self.arrow = False
         self.move = ''
         self.connect = []
-        self.dessine(G, self.generateRegular )
+        self.dessine(G, self.generateRegular)
         self.can.bind('<Button-1>', self.startMove)
         self.can.bind('<Motion>', self.hover)
         self.can.bind('<ButtonRelease-1>', self.stopMove)
         # self.can.bind('<Button-3>', self.startConnect)
         # self.can.bind('<ButtonRelease-3>', self.stopConnect)
-        Button(self, text = "Polygone Regulier", command = lambda x=3: self.dessine(G,self.generateRegular)).grid(row = 3, column = 0)
-        Button(self, text = "Grille", command = lambda x=3: self.dessine(G,self.generateGrid)).grid(row = 3, column = 1)
-        Button(self, text = "Parcours préfixe", command = lambda x=3: self.drawParcours(self.params[0], 'préfixe')).grid(row = 3, column = 2)
-        Button(self, text = "Parcours infixe", command = lambda x=3: self.drawParcours(self.params[0], 'infixe')).grid(row = 3, column = 3)
-        Button(self, text = "Parcours suffixe", command = lambda x=3: self.drawParcours(self.params[0], 'suffixe')).grid(row = 3, column = 4)
+        Button(self, text = "Polygone Regulier", command = lambda x=3: self.dessine(G,self.generateRegular)).grid(row = 1, column = 1)
+        Button(self, text = "Grille", command = lambda x=3: self.dessine(G,self.generateGrid)).grid(row = 2, column = 1)
+        Button(self, text = "Parcours préfixe", command = lambda x=3: self.drawParcours(self.params[0], 'préfixe')).grid(row = 3, column = 1)
+        Button(self, text = "Parcours infixe", command = lambda x=3: self.drawParcours(self.params[0], 'infixe')).grid(row = 4, column = 1)
+        Button(self, text = "Parcours suffixe", command = lambda x=3: self.drawParcours(self.params[0], 'suffixe')).grid(row = 5, column = 1)
+        Button(self, text = "Coloration : Glouton Simple", command = lambda x=3: self.colorier('G1')).grid(row = 7, column = 1)
+        Button(self, text = "Coloration : Glouton", command = lambda x=3: self.colorier('G1+')).grid(row = 8, column = 1)
+        Button(self, text = "Coloration : DSATUR", command = lambda x=3: self.colorier('DSATUR')).grid(row = 9, column = 1)
         okCmd = self.can.register(self.callback)
         self.sv = StringVar()
         self.ent = Entry(self, textvariable = self.sv, validate = "all", validatecommand = (okCmd, '%P'))
-        self.ent.grid(row = 4, column = 0, columnspan = 4, sticky='EW', padx = 20)
+        self.ent.grid(row = 80, column = 0, columnspan = 2, sticky='EW', padx = 20)
         # self.lab = Label(self, text = '')
         # self.lab.grid(row = 4, column = 5)
 
@@ -293,6 +296,20 @@ class Application(Tk):
             self.a[i].cerclePeint(color = self._from_rgb((0, 0, 0)))
         self.can.update()
 
+    def colorier(self, key, call = 1 ):        
+        self.clearColor()
+        try :
+            if key == 'DSATUR' : couleur = colorationDSATUR(self.params)
+            elif key == 'G1': couleur = colorationG1(self.params)
+            elif key == 'G1+': couleur = colorationG1p(self.params)
+        except :
+            raise Exception("Votre méthode n'est pas programmée")
+        colnames = ['red', 'green', 'blue', 'yellow', 'orange', 'magenta', 'grey', 'cyan', 'teal']
+        for i in self.a:
+#            col = int(self._color / (couleur[i]+1))
+            self.a[i].cerclePeint(color = colnames[couleur[i]])
+        self.can.update()
+
     def _animatePaint(self, arbre, pause = 1):
         n = len(self.a)
         self.a[arbre.valeur].cerclePeint(color = self._from_rgb((0, self._color, 0)))
@@ -372,241 +389,3 @@ class graphViz:
             self.color = color
 
 
-if __name__ == "__main__":
-    """ Routines for classroom """
-
-    def parcoursLargeur(G):
-        print("DEBUT")
-        f = [G]
-        data = [1]
-        while len(f) != 0:
-            x = f.pop(0)
-            print(x.valeur)
-            if x.gauche != None:
-                data.append(1)
-                Tg = x.gauche
-                f.append(Tg)
-            else:
-                data.append(0)
-            if x.droit != None:
-                data.append(1)
-                Td = x.droit
-                f.append(Td)
-            else:
-                data.append(0)
-            print(x, x.valeur, x.gauche, x.droit, f)
-        #print(data)
-
-
-    def parcoursInfixe(a, txt, dico):
-        if a is None: return
-        parcoursInfixe(a.gauche, txt+'0', dico)
-        print(a.valeur, txt)
-        dico[a.valeur] = txt
-        parcoursInfixe(a.droit, txt+'1', dico)
-
-    def parcoursInfixe2(a):
-        if a is None: return
-        parcoursInfixe2(a.gauche)
-        print(a.valeur)
-        parcoursInfixe2(a.droit)
-
-
-    # g = GrapheDico()
-    # # Exemple 1 du cours
-    # # g.ajouteArcs('A','B,C')
-    # # g.ajouteArcs('B','A,D')
-    # # g.ajouteArc('C','A')
-    # # g.ajouteArc('D','B')
-
-    # # Exemple 2 du cours
-    # g.ajouteArcs('A','C,D')
-    # g.ajouteArc('B','A')
-    # g.ajouteArcs('C','E,D')
-    # g.ajouteArcs('D','A,B,C,E,F')
-    # g.ajouteArc('E','F')
-    # g.ajouteArcs('F','D')
-    #g.ajouteArcs('Romain','Lemi')
-
-    # g.ajouteArcs('Alice','Bob','Cathy')
-    # #g.ajouteArc('Alice','Cathy')
-    # g.ajouteArc('Bob','Deon')
-    # g.ajouteArc('Kevin','Leon')
-    # g.ajouteArc('Leon','Alice')
-    # g.ajouteArc('Alice','Leon')
-    # g.ajouteArc('Patsy','Leon')
-    # g.ajouteArc('Gollum','Leon')
-    # g.ajouteSommet('Eleonore')
-
-
-    #Application(g, 'self.generateRegular', arrow = True).mainloop()
-    #A = Noeud(Noeud(None,"B",Noeud(None,"C",None)),"A", Noeud(Noeud(None, "E", None), "D", Noeud(Noeud(None, "H", None), "F", Noeud(None, "G", None))))
-    A5 = Noeud(Noeud(Noeud(Noeud(Noeud(None,"",None),"||",None),54,None),"",None),"ABC", None)
-    A4 = Noeud(Noeud(Noeud(None,'A',None),'B',Noeud(None,'C',None)),'D',Noeud(Noeud(None,'E',None),'F',Noeud(Noeud(None,'I',None),'G',Noeud(Noeud(None,'J',None),'H',Noeud(None,'K',None)))))
-    A3 = Noeud(Noeud(Noeud(None, "C", Noeud(None, "E", None)), "B", Noeud(None, "D", None)), "A", Noeud(Noeud(Noeud(None, "I", None), "G", None), "F", Noeud(None, "H", Noeud(None, "J", None))))
-    A2 = Noeud(Noeud(None, 'B', Noeud(None, 'C', None)), 'A', Noeud(None, 'D', None))
-    A = Noeud(Noeud(Noeud(None, 'D', None), 'B', Noeud(None, 'E', None)), 'A', Noeud(None, 'C', None))
-    #g2 = GrapheDico()
-
-    print('<<<<<<<')
-    parcoursInfixe2(A)
-    print('<<<<<<<')
-
-    def affiche(A):
-        if A is None: return
-        print("[", end="")
-        affiche(A.gauche)
-        print(A.valeur, end="")
-        affiche(A.droit)
-        print("]", end="")
-
-    def etatArbre(txt):
-        """ counts the number of opening '[' and closing ']':
-        - An opening bracket is counted as +1
-        - A closing bracket is counted as -1
-        """
-        if len(txt) == 0: return [-100]
-        return [txt[0:i+1].count('[')-txt[0:i+1].count(']') for i in range(len(txt))]
-
-    def validerArbre(txt):
-        """ A tree is considered valid if :
-        - the last item is 0
-        - the minimum of the open/close brackets count is positive (avoid the invalid : [a][b])
-        """
-        return etatArbre(txt)[-1] == 0 and min(etatArbre(txt)) >= 0
-
-    def getRoot(txt):
-        """ functional paradigm : groupby gathers the groups of similar values ;
-        enumerate gives us a list of indices ; the filter selects the longest streak of brackets
-        equal to 1 (i.e. the root of the sub-tree)
-            returns a list of indices corresponding to the root of the sub-tree.
-        """
-        tab = etatArbre(txt)
-        groups = [list(g) for _, g in groupby(enumerate(tab), lambda x: x[1])]
-        l = list(filter(lambda g : g[0][1]==1 and len(g)>=2, groups))[0][1:]
-        return [i for i, _ in l]
-
-    def construireArbre(txt):
-        """ build recursively node by node the binary tree """
-        if not validerArbre(txt): return   # is it a validTree ?
-        liste = getRoot(txt)
-        return Noeud(construireArbre(txt[1:liste[0]]), txt[liste[0]:liste[-1]+1], \
-                    construireArbre(txt[liste[-1]+1:len(txt)-1]))
-
-    def autocompletion(txt):
-        txtAutoCompleted = ''
-        i = 0
-        while i<len(txt):
-            j=0
-            while txt[i+j] != '[' and txt[i+j] != ']':
-                j+=1
-            if txt[i-1] == '[' and txt[i+j] == ']':
-                txtAutoCompleted += '[none]' + txt[i:i+j] + '[none]]'
-            else:
-                j = 0
-                txtAutoCompleted += txt[i]
-            i += j+1
-        return getSingle(getSingle(txtAutoCompleted,'['),']')
-
-
-    def getSingle(txt, char):
-        """ detect single node and add a second empty (None) node """
-        save = []
-        saveA = []
-        tab = ''
-        pos = 0
-        if char == '[': char1 = ']' 
-        else: char1 = '['
-        for i in txt:
-            if i == char:
-                if tab != '' and char1 not in tab: 
-                    save.append(tab)
-                    saveA.append(pos)
-                tab = ''
-            else : 
-                tab += i
-            pos += 1
-        print('ligne 552',save)
-
-        if char == '[': save2 = [saveA[i]-len(save[i]) for i in range(len(save))]
-        else : save2 = [saveA[i]-len(save[i])+len(save[i]) for i in range(len(save))]
-
-    #    print('ligne 557', save2, [saveA[i]-len(save[i]) for i in range(len(save))], txt)
-
-        if len(save2) == 0 : return txt
-        txtAutoCompleted = ''
-        j = 0
-        for i in range(len(save2)):
-            while j < save2[i]:
-                txtAutoCompleted += txt[j]
-                j += 1
-            txtAutoCompleted += '[none]'
-        print('ligne 431',char, save2)
-        print(txtAutoCompleted)
-        txtAutoCompleted += txt[save2[-1]:]
-        return txtAutoCompleted
-
-
-
-    print('là',autocompletion('[A[[ABL]CL[AB[I]]]]'))
-
-
-    B = construireArbre('[[[D]B[E]]A[C]]')
-    C = construireArbre('[[E[[J]F[G]]]A[[[[K]D[L]]C]B[M]]]')
-    D = construireArbre('[[[D]B[E]]A[C]]')
-
-    # print("method getIndex",[w for w in getIndex('[[B0[EL]]A[[ABL[CC]]CL]]', '[')])
-    # print("method getIndex",[w for w in getIndex('[[B0[EL]]A[[ABL[CC]]CL]]', ']')])
-
-    print('-----')
-    getSingle('[[B0[EL]]A[[ABL[CC]]CL]]', '[')
-    print('-----')
-    getSingle('[[B0[EL]]A[[ABL[CC]]CL]]', ']')
-    print('-----')
-    getSingle(getSingle('[[B0[EL]]A[[ABL[CC]]CL]]', ']'),'[')
-    print('-----')
-
-
-    affiche(A)
-    print()
-    affiche(B)
-
-    print('ici', parcoursLargeur(A2))
-
-    #D = construireArbre('[[none]A[[none]B[[none]C[[none]D[none]]]]]')
-    D = construireArbre(('[[[[[1]5]10[11]]21[[22[11]]30[45]]]55[[[59]60[67]]89[[92]121[132]]]]'))
-    #a=construireArbre(autocompletion('[[B0[EL[KK]]]A[[ABL[CC]]CL[AB[I]]]]'))  # Problème with node AB
-    print('là',autocompletion('[[B0]A[[ABL]CL[AB[I]]]]'))
-    a=construireArbre(autocompletion('[[B0]A[[ABL]CL[AB[I]]]]'))  # Problème with node AB
-    #D=construireArbre(autocompletion('[B0[[[DG]K]A[AV[A]]]]'))
-    #print('ligne',a)
-    #D = construireArbre(a)
-    #print('ligne 463',D)
-    #D = construireArbre(autocompletion('[[[none]B0[EL]]A[[[none]ABL[CC]]CL]]'))
-    #detectSingleNode('[[BO[EF]]AB[[KL]CM]]')
-    #g2.arbre2Graph(g2.createArbreParfait(A))
-    #print(g2.adj)
-    #print('ligne321',g2.adj)
-    #print(g2.distanceMax('A'))
-    g = GrapheDico()
-    g.ajouteArcs('A', 'B,C,E')
-    g.ajouteArcs('C', 'A,F')
-    g.ajouteArcs('B', 'D')
-    g.ajouteArcs('D', 'B,C,A')
-    for i in range(10):
-        g.ajouteArcs('D', 'B,C,A')
-    #g.showAdjMatrixLTX()
-    #g.showAdjMatLTX()
-    print(g.distance('A','F'))
-    D = construireArbre("[A]")
-    Application(g, 'generateRegular', weight = True, arrow = False, width=500, height=300).mainloop()
-    #Application(g, 'generateRegular', arrow = False, width=500, height=300).mainloop()
-
-
-
-    a = ABR()
-    a.ajouter(30)
-    a.ajouter(40)
-    a.ajouter(10)
-    a.ajouter(35)
-    print(a.racine.gauche.valeur,a.racine.droit.valeur,a.racine.droit.gauche.valeur)
