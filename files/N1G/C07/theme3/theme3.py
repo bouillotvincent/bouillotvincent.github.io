@@ -1,44 +1,58 @@
-import timeit
+import timeit                     # mesure de temps de calcul
+from matplotlib.pyplot import *   # bibliothèque graphique
 
-def triSelection(L: list)-> list:
+
+def plusLeger(T: list, idebut:int = 0) -> list:
+    """
+    Trouve la valeur la plus petite d'un tableau d'entirs
+    Paramètres d'entrée : 
+        - T : tableau d'entiers
+        - idebut : paramètre optionnel (valeur par défaut : 0)
+    """
+    n = len(T)
+    
+
+    return 0 # à modifier
+
+
+def triSelectionSimple(boitePoids: list)-> list:
+    """
+    Réalise un tri par sélection simplifié
+    Paramètres d'entrée : 
+        - boitePoids : tableaux d'entiers
+    """
+    n = len(boitePoids)
+    boitePoidsTrie = []
+    
+    for _ in range(0,n):
+        iLeger = plusLeger(boitePoids)
+        boiteLegere = boitePoids.pop(iLeger)
+        boitePoidsTrie.append(boiteLegere)
+
+    return boitePoidsTrie
+
+
+def triSelection(boitePoids: list)-> list:
     """
     Réalise un tri par sélection
     Paramètres d'entrée : 
-        - L : tableaux d'entiers
+        - boitePoids : tableaux d'entiers
     """
-    #
-    #
-    #
-    #
-    #
-    return 
+    n = len(boitePoids)
+    
+    return boitePoids
 
-listeNombresTriee = triSelection([10, 3, 7 ,5 ,6, 1]) # trie la liste
+
+#--------- Faites vos tests ci-dessous ---------#
+listeNombresTriee = triSelectionSimple([10, 3, 7 ,5 ,6, 1]) # trie la liste
 print(listeNombresTriee) # affiche la liste
 
-def triInsertion(L: list)-> list:
-    """
-    Réalise un tri par insertion
-    Paramètres d'entrée : 
-        - L : tableaux d'entiers
-    """
-    #
-    #
-    #
-    #
-    #
-    return # A compléter
 
-listeNombresTriee = triInsertion([10, 3, 7 ,5 ,6, 1]) # trie la liste
-print(listeNombresTriee) # affiche la liste
 
-tailleTableau = [ 10**k for k in range(1,6) ]
+tailleTableau = [ 10**1,10**2,10**3,10**4,10**5,10**6 ]
 tempsSelection = []
-tempsInsertion = []
-tempsSorted = []
 
 # Création d'un graphique
-# from matplotlib.pyplot import *
 # x = [1,2,3,4]
 # y = [10, 23, 45, 7]
 # plot(x, y, 'x-r')
