@@ -4,7 +4,8 @@ from matplotlib.pyplot import *   # bibliothèque graphique
 
 def plusLeger(T: list, idebut:int = 0) -> list:
     """
-    Trouve la valeur la plus petite d'un tableau d'entirs
+    Trouve la valeur la plus petite d'un tableau d'entiers
+    et renvoie la position de cette valeur
     Paramètres d'entrée : 
         - T : tableau d'entiers
         - idebut : paramètre optionnel (valeur par défaut : 0)
