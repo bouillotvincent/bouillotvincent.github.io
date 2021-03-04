@@ -389,43 +389,6 @@ class graphViz:
             self.color = color
 
 
-def colorationDSATUR(G: GrapheDico):
-    sommetsOrd = sorted(G.listeSommets(), key = lambda x: G.degre(x), reverse =True)
-    couleur = {}
-    degreMax = sommetsOrd.pop(0)
-    couleur[degreMax] = 0 
-
-    while sommetsOrd != []:
-        maxDSAT = dsat(G, couleur)
-
-        sommet2color = egalite(sommetsOrd, maxDSAT)
-
-        # remplacez ces lignes par une instruction Python sur les tableaux.
-        for i, liste in enumerate(sommetsOrd):
-            if liste[0] == sommet2color:
-                iPop = i
-        print('ipo', iPop)
-
-        aColorier = sommetsOrd.pop(iPop)
-        print('acol',aColorier)
-        couleur[aColorier] = choixCouleur(G, aColorier, couleur)
-    return couleur
-
-
-# def colorationG12(G: GrapheDico):
-#     couleurTab = list(range(50))
-#     couleurDico = {}
-#     S = G.listeSommets()
-#     for sommet in S:
-#         couleursVoisins = [couleurDico[s] for s in G.listeVoisins(sommet) if s in couleurDico]            
-#         nf = True
-#         for i in couleurTab:
-#             if i not in couleursVoisins and nf == True:
-#                 pc = i 
-#                 nf = False
-#         couleurDico[sommet] = pc
-#     return dic
-
 def colorationG1(G):
     couleurTab = list(range(50))
     couleurDico = {}

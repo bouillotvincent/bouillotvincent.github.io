@@ -1,4 +1,4 @@
-from GViz import *
+from GViz_Correction import *
 
 class Noeud:
     
@@ -7,6 +7,7 @@ class Noeud:
         self.valeur = v
         self.droit = d
 
+class GrapheDico:
     def __init__(self):
         self.adj = {}
 
