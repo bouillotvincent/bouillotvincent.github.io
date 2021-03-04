@@ -1,4 +1,4 @@
-def colorationDSATUR(G: GrapheDico):
+def colorationDSATUR(G):
     sommetsOrd = sorted(G.listeSommets(), key = lambda x: G.degre(x), reverse =True)
     couleur = {}
     degreMax = sommetsOrd.pop(0)

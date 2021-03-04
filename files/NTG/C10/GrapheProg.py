@@ -63,3 +63,10 @@ class GrapheDico:
 
 
 
+G = GrapheDico()
+G.ajouteArc('A','B')
+G.ajouteArc('B','A')
+G.ajouteArc('C','H')
+G.ajouteArc('H','C')
+
+Application(G).mainloop()
