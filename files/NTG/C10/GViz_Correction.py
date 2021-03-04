@@ -416,3 +416,52 @@ def colorationG1p(G):
                 nf = False
         dic[sommet] = pc
     return dic
+
+def colorationDSATUR(G):
+    sommetsOrd = sorted(G.listeSommets(), key = lambda x: G.degre(x), reverse =True)
+    couleur = {}
+    degreMax = sommetsOrd.pop(0)
+    couleur[degreMax] = 0 
+
+    while sommetsOrd != []:
+        maxDSAT = dsat(G, couleur)
+        sommet2color = egalite(sommetsOrd, maxDSAT)
+
+        for i, liste in enumerate(sommetsOrd):
+            if liste == sommet2color:
+                iPop = i
+
+        aColorier = sommetsOrd.pop(iPop)
+        couleur[aColorier] = choixCouleur(G, aColorier, couleur)
+    return couleur
+
+def trouveMax(dico):
+    maxi = -1
+    for cle, valeur in dico.items():
+        if maxi < valeur:
+            maxVal = [cle]
+            maxi = valeur
+        elif maxi == valeur:
+            maxVal.append(cle)
+    return maxVal
+
+def dsat(G, couleur):
+    degreSat = {i:set() for i in G.listeSommets()}
+    for sommet in couleur:
+        for i in G.listeVoisins(sommet):
+            degreSat[i].add(couleur[sommet])
+    return trouveMax({s: len(col) for s, col in degreSat.items() if s not in couleur})
+
+def egalite(sommetsOrd, maxDSAT):
+    cles = [i for i in maxDSAT]
+    for sommet in sommetsOrd:
+        if sommet in cles:
+            return sommet[0]
+    raise Exception('Something went wrong')
+
+def choixCouleur(G, sommet, couleur, n=10):
+    A = {couleur[i] for i in G.listeVoisins(sommet) if i in couleur}  # Ceci est un set() = ensemble au sens mathématique
+    for j in range(n):
+        if j not in A:
+            return j
+    raise Exception('Please increase number of colors')
