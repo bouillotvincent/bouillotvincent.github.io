@@ -1,0 +1,43 @@
+/*
+style.css
+--------- 
+contient tous les styles de mon site web
+
+par Vincent B.
+*/
+
+*  /* selectionneur universel */
+{
+    font-style: normal;
+}
+
+h1
+{
+    font-family: 'Snell Roundhand', Verdana;
+    color: crimson;
+    font-size : 1.7em;
+}
+
+h2
+{
+    font-style: oblique;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+
+.zoom {
+    transition: transform .2s; /* Animation */
+    width: 100px;
+    height: 100px;
+    
+}
+
+.zoom:hover {
+
+}
+
+.hide {
+    border-style: solid;
+    max-height:100px;
+}

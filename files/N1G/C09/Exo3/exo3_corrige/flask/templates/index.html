@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Utilisation de Flask</title>
+	</head>
+	<body>
+	  <h1>L'horloge pas parlante</h1>
+	  <p>Le serveur me donne l'heure, il est {{heure}} h {{minute}} minutes et {{seconde}} secondes</p>
+
+       <form action="http://localhost:5000/resultat" method="post">
+           <label>Nom</label> : <input type="text" name="nom" />
+           <label>Prénom</label> : <input type="text" name="prenom" />
+           <input type="submit" value="Envoyer" />
+        </form>
+        
+    </body>
+</html>

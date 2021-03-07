@@ -1,0 +1,27 @@
+body {
+    background: url('/static/pokemon-background.jpg');
+    font-family: "PokeFont";
+}
+
+@font-face {
+    font-family: "PokeFont";
+    src: url('/static/Pokemon Solid.ttf');
+  }
+
+h1 {
+    font-size:25;
+    color:red;
+}
+
+p {
+    color:blue;
+}
+
+em {
+    font-size: 3em;
+}
+
+strong {
+    font-size: 0.7em;
+    font-style: italic;
+}
