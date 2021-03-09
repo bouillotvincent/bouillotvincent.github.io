@@ -57,7 +57,7 @@ def triInsertion(L: list)-> list:
 listeNombresTriee = triSelectionSimple([10, 3, 7 ,5 ,6, 1]) # trie la liste
 print(listeNombresTriee) # affiche la liste
 
-tailleTableau = [ 10**1,10**2,10**3,10**4 ]
+tailleTableau = [ 200+i*200 for i in range(8) ]
 L100 = [i for i in range(100)]
 L1000 = [i for i in range(1000)]
 L10000 = [i for i in range(10000)]
