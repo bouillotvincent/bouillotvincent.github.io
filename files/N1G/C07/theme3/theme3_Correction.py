@@ -9,8 +9,8 @@ def plusLeger(T: list, idebut:int = 0) -> list:
         - idebut : paramètre optionnel (valeur par défaut : 0)
     """
     n = len(T)
-    imin = 0  
-    for i in range(n):
+    imin = idebut  
+    for i in range(idebut, n):
         if T[i] < T[imin]:
             imin = i
     return imin
@@ -45,6 +45,7 @@ def triSelection(boitePoids: list)-> list:
     return boitePoids
 
 
+
 def triInsertion(L: list)-> list:
     """
     Réalise un tri par insertion
@@ -54,19 +55,20 @@ def triInsertion(L: list)-> list:
     pass  # à supprimer
 
 
-listeNombresTriee = triSelectionSimple([10, 3, 7 ,5 ,6, 1]) # trie la liste
+listeNombresTriee = triSelection([10, 3, 7 ,5 ,6, 1]) # trie la liste
 print(listeNombresTriee) # affiche la liste
 
-tailleTableau = [ 200+i*200 for i in range(8) ]
+# listes triées
+# pour trier dans l'ordre inverse, on fait sorted(L100, reverse = True)
 L100 = [i for i in range(100)]
 L1000 = [i for i in range(1000)]
-L10000 = [i for i in range(10000)]
-print(timeit.timeit('triSelection(L100)', globals=globals(), number= 5)/5)
-print(timeit.timeit('triSelection(L1000)', globals=globals(), number= 5)/5)
-print(timeit.timeit('triSelection(L10000)', globals=globals(), number= 5)/5)
-tempsSelection = []
+L2000 = [i for i in range(2000)]
+print(100, timeit.timeit('triSelection(L100)', globals=globals(), number= 5)/5)
+print(1000, timeit.timeit('triSelection(L1000)', globals=globals(), number= 5)/5)
+print(2000, timeit.timeit('triSelection(L2000)', globals=globals(), number= 5)/5)
 
 
+tailleTableau = [ 200+i*200 for i in range(8) ]
 
 
 # Création d'un graphique
