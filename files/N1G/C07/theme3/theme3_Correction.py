@@ -63,17 +63,20 @@ print(listeNombresTriee) # affiche la liste
 L100 = [i for i in range(100)]
 L1000 = [i for i in range(1000)]
 L2000 = [i for i in range(2000)]
-print(100, timeit.timeit('triSelection(L100)', globals=globals(), number= 5)/5)
-print(1000, timeit.timeit('triSelection(L1000)', globals=globals(), number= 5)/5)
-print(2000, timeit.timeit('triSelection(L2000)', globals=globals(), number= 5)/5)
+a = timeit.timeit('triSelection(L100)', globals=globals(), number= 5)/5
+b = timeit.timeit('triSelection(L1000)', globals=globals(), number= 5)/5
+c = timeit.timeit('triSelection(L2000)', globals=globals(), number= 5)/5
+print(100, a)
+print(1000, b)
+print(2000, c)
 
+x = [100, 1000, 2000]
+y = [a, b, c]
 
 tailleTableau = [ 200+i*200 for i in range(8) ]
 
 
 # Création d'un graphique
 # from matplotlib.pyplot import *
-# x = [1,2,3,4]
-# y = [10, 23, 45, 7]
 # plot(x, y, 'x-r')
 # show()
