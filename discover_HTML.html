@@ -1,93 +1,46 @@
 <!DOCTYPE html>
-<html lang="fr">
-
+<html>
 <head>
-    <meta charset="utf-8">
-    <title>1G NSI</title>
-    <meta name="author" content="Antoine Becquet">
-    <meta name="description" content="page cours NSI première générale">
-    <link rel="stylesheet" href="Font/Serif/cmun-serif.css">
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
 </head>
 
 <body>
+  <p>You can execute any Python code. Just enter something in the box below and click the button.</p>
+  <input id='code' value='sum([1, 2, 3, 4, 5])'>
+  <button onclick='evaluatePython()'>Run</button>
+  <br>
+  <br>
+  <div>
+    Output:
+  </div>
+  <textarea id='output' style='width: 100%;' rows='6' disabled></textarea>
 
-    <h1 id="hdp">Projet des vacances : Création d'un site internet</h1>
+  <script>
+    const output = document.getElementById("output");
+    const code = document.getElementById("code");
 
-	<p><strong>Objectif</strong> : apprendre à manipuler HTML et CSS</p>
+    function addToOutput(s) {
+      output.value += '>>>' + code.value + '\n' + s + '\n';
+    }
 
+    output.value = 'Initializing...\n';
+    // init Pyodide
+    async function main(){
+      await loadPyodide({ indexURL : 'https://cdn.jsdelivr.net/pyodide/v0.17.0/full/' });
+      output.value += 'Ready!\n';
+    }
+    let pyodideReadyPromise = main();
 
-    <div class="encadre">
-		<strong>Méthode</strong> : Pendant ces vacances, vous devez réaliser un site internet ! 
-		<p>	
-			Pour réaliser ce travail, vous devez apprendre à utiliser deux langages que sont HTML et CSS.
-		Pour cela, vous allez consulter les pages <a href="https://developer.mozilla.org/fr/docs/Apprendre/Commencer_avec_le_web/Les_bases_HTML" target="_blank">bases en HTML</a> et <a href="https://developer.mozilla.org/fr/docs/Apprendre/Commencer_avec_le_web/Les_bases_CSS" target="_blank">bases en CSS</a> de la fondation Mozilla. 
-		Vous utiliserez l'éditeur <a href="http://brackets.io">Brackets</a> (ou similaires) afin de coder en HTML et CSS.
-		<p> À partir des menus déroulants sur la gauche de la page de Mozilla, vous êtes libres de découvrir le HTML et le CSS aussi loin que vous le souhaitez mais <span class="warning">n'étudiez pas le Javascript</span> !!</p>
-    
-		<p>
-			Un exemple, volontairement imparfait, de ce qui est demandé est disponible <a href="maPagePerso/index.html" target="_blank">ici</a>. 
-			Vous pouvez étudier (et vous inspirer) du code de cette page en cliquant sur "Afficher, Options pour les développeurs, CodeSource".
-		</p>	
-	</div>
-
-	<p></p>
-
-	<div class=encadre>
-		<strong>Travail à réaliser</strong> :	Votre site doit impérativement comprendre :
-		<ul>
-            <li>Une page d'accueil appelée <strong>index.html</strong> contenant :
-				<ul>
-					<li>Une petite présentation académique (classe, spécialités, idées d'orientation...) </li>
-					<li>Une petite présentation personnelle (centres d'intérêts, <em>sports pratiqués</em> ...) </li>
-					<li>Une image (photo de vous ou autre)</li>
-					<li>Une liste de navigation permettant d'accéder à la page <strong>projets.html</strong></li>
-				</ul>
-			</li>
-            <li>Une page appelée <strong>projets.html</strong> contenant :
-				<ul>
-					<li>Une description du programme Python permettant de tracer le triangle de Sierpinski</li>
-					<li>Un accès à votre code Python grâce à un lien (de téléchargement)</li>
-					<li>Une liste de navigation permettant de revenir à la page <strong>index.html</strong></li>
-				</ul>
-			</li>
-			<li>Un fichier CSS <strong>style.css</strong> permettant de personnaliser le style de la page.</li>
-		</ul>
-	</div>
-	
-	<p></p>
-
-
-	
-    <div class="encadre">
-		<strong>Procédure : </strong>
-		<p>
-		La procédure de mise en ligne décrite ci-dessous doit être rigoureusement suivie. 
-		Ne mettez pas de caractères accentués lors de la création de votre nom d'utilisateur.
-		<ol>
-            <li>S'inscrire sur GitHub.com avec comme nom d'utilisateur : nomprenom (votre nom, votre prenom). Validez immédiatement la création de votre compte.</li>
-            <li>Se connecter sur votre compte GitHub et faire les premiers réglages demandés.</li>
-			<li>Créez un nouveau "Create a new Repository" et appelez-le <span class = warning>nomprenom.github.io</span>. </li>
-			<li>Choisissez "Add a README file"</li>
-			<li>Choisissez ensuite "creating a new file" comme indiqué ci-dessous : </li>
-			<img src ="maPagePerso/files/capture.png" alt = "Explication page perso" width = 50%>
-			<li>Dans votre fichier, écrivez <span class = warning> &lt h1> Je suis en ligne ! &lt /h1></span> et appelez ce fichier index.html </li>
-			<li>Cliquez sur "Settings" puis descendez jusqu'à trouver "Github Pages". Dans, "Branch", sélectionnez "main" puis "save"</li>
-			<img src ="maPagePerso/files/capture3.png" alt = "Explication page perso" width = 50%>
-			<img src ="maPagePerso/files/capture4.png" alt = "Explication page perso" width = 50%>
-			<li>Vérifiez que votre site est bien en ligne à l'adresse 'nomprenom.github.io'. 
-				Lors de la création du site, cela peut prendre jusqu'à 20 minutes. Soyez patient.</li>
-		<li>Maintenant que vous avez vérifié que votre site web fonctionne, vous vous pouvez déposer tous les fichiers HTML, CSS, jpeg, python... que vous avez créé sur votre ordinateur.</li>
-		<img src ="maPagePerso/files/capture2.png" alt = "Explication page perso" width = 50%>
-	</ol>
-</div>
-
-    <p>
-    </p>
-	<a class="left" href="NSI_1G.html">Retour Première NSI</a>
-	<a href="index.html">Accueil</a>
-	<a href="#top">Haut de page</a>
-
-
+    async function evaluatePython() {
+      await pyodideReadyPromise;
+      try {
+        let output = await pyodide.runPythonAsync(code.value);
+        addToOutput(output);
+      } catch(err) {
+        addToOutput(err);
+      }
+    }
+  </script>
 </body>
+
 </html>
