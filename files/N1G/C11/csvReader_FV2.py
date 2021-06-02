@@ -19,6 +19,21 @@ def exportCSV(tableau : list, fichier : str):
         fichierCSV.writerow(ligne)
     return None
 
+def filtrerLigne(tableau : list, critere : str, valeur : str):
+    filtrerTab = []
+    for i in range(len(tableau)):   
+        eleve = tableau[i]
+        if eleve[critere] == valeur:
+            filtrerTab.append(eleve)
+            print(i, eleve, eleve["Nom"])
+    return filtrerTab
+
+
 table = importCSV('exemple.csv')
 print(table)
-exportCSV(table, 'exemple2.csv')
+eleve = {'Nom': 'Julien', 'Francais':12, 'Science':15, 'Histoire':3}
+table.append(eleve)
+
+tableF = filtrerLigne(tableau = table, critere = 'Francais', valeur = '14')
+exportCSV(tableF, 'exemple_Julien.csv')
+
