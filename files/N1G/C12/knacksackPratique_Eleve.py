@@ -2,13 +2,16 @@
 dicoObjet = {}
 
 
-def f(dicoObjet):
+def f(dicoObjet, col):
     # Que font ces deux lignes ?
-    tableau_trié = sorted(dicoObjet.items(), key = lambda a: a[1][2], reverse=True)
+    print(dicoObjet.items())
+    tableau_trié = sorted(dicoObjet.items(), key = lambda a: a[1][col], reverse=True)
     return {clé:valeur for clé, valeur in tableau_trié}
 
 print(dicoObjet)
-print(f(dicoObjet))
+
+for objet, caracteristique in dicoObjet.items():
+    print(objet, caracteristique)
 
 aVoler = []
 poidsMax = 30
