@@ -33,16 +33,17 @@ class Tortue:
 		self.ctx.lineTo(self.x + L * cos(self.deg2rad(self.angle)), \
 						self.y + L * sin(self.deg2rad(self.angle)))
 		self.ctx.stroke()
-		self.x = L
+		self.x = self.x + L * cos(self.deg2rad(self.angle))
+		self.y = self.y + L * sin(self.deg2rad(self.angle))
 	
 	def fd(self, L):
 		self.forward(L)
 
 	def right(self, angle):
-		self.angle -= angle
+		self.angle += angle
 
 	def left(self, angle):
-		self.angle += angle
+		self.angle -= angle
 
 canvas = document.querySelector('canvas')
 canvas.setAttribute('width', 640)
