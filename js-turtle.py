@@ -58,4 +58,4 @@ canvas.addEventListener('mousemove', onmousemove)
 canvas.addEventListener('mousedown', onmousedown)
 canvas.addEventListener('mouseup', onmouseup)
 
-Tortue(context)
+fred = Tortue(context)
