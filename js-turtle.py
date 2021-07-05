@@ -28,7 +28,7 @@ class Tortue:
 			self.ctx.fillStyle = self.color
 			
 	def forward(self, L):
-		self.ctx.beginPath()
+		# self.ctx.beginPath()
 		self.ctx.moveTo(self.x, self.y)
 		self.ctx.lineTo(self.x + L * cos(self.deg2rad(self.angle)), \
 						self.y + L * sin(self.deg2rad(self.angle)))
