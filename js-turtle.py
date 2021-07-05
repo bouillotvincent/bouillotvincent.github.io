@@ -1,13 +1,22 @@
 from js import document
 import inspect
+from math import cos, sin, pi
 
 class Tortue:
 
-	def __init__(self, context, x = 0, y = 0):
+	def __init__(self, context, x = 0, y = 0, angle = 0):
 		self.x, self.y = x, y
+		self.angle = angle
 		self.color = '#ff0000'
 		self.width = 1
 		self.style = '🐢'
+		self.ctx = context
+
+	def rad2deg(self, angle):
+		return angle / pi *180
+
+	def deg2rad(self, angle):
+		return angle / 180 * pi
 
 	def pencolor(self, *args):
 		if len(args) not in [0,1] : 
@@ -16,13 +25,24 @@ class Tortue:
 			return self.color
 		else:
 			self.color = args
+			self.ctx.fillStyle = self.color
 			
-	def forward(self):
-		context.fillStyle = self.color
-		context.beginPath()
-		context.moveTo(10, 10)
-		context.lineTo(310, 310)
-		context.stroke()
+	def forward(self, L):
+		self.ctx.beginPath()
+		self.ctx.moveTo(self.x, self.y)
+		self.ctx.lineTo(self.x + L * cos(self.deg2rad(self.angle)), \
+						self.y + L * sin(self.deg2rad(self.angle)))
+		self.ctx.stroke()
+		self.x = L
+	
+	def fd(self, L):
+		self.forward(L)
+
+	def right(self, angle):
+		self.angle -= angle
+
+	def left(self, angle):
+		self.angle += angle
 
 canvas = document.querySelector('canvas')
 canvas.setAttribute('width', 640)
