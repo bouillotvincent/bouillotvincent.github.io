@@ -11,6 +11,13 @@ class Tortue:
 		self.width = 1
 		self.style = '🐢'
 		self.ctx = context
+		self.__set_default()
+
+
+	def __set_default(self):
+		self.ctx.lineJoin = "miter"
+		self.ctx.lineCap = "square"
+
 
 	def rad2deg(self, angle):
 		return angle / pi *180
@@ -25,13 +32,13 @@ class Tortue:
 			return self.color
 		else:
 			self.color = args
-			self.ctx.fillStyle = self.color
+			self.ctx.strokeStyle = self.color
 
 	def pensize(self, width = None):
 		self.ctx.lineWidth = width
 			
 	def forward(self, L):
-		# self.ctx.beginPath()
+		self.ctx.beginPath()
 		self.ctx.moveTo(self.x, self.y)
 		self.ctx.lineTo(self.x + L * cos(self.deg2rad(self.angle)), \
 						self.y + L * sin(self.deg2rad(self.angle)))
@@ -52,8 +59,7 @@ canvas = document.querySelector('canvas')
 canvas.setAttribute('width', 640)
 canvas.setAttribute('height', 480)
 context = canvas.getContext("2d")
-context.strokeStyle = "#df4b26"
-context.lineJoin = "round"
+context.strokeStyle = "red"
 context.lineWidth = 5
 pen = False
 lastPoint = (0, 0)
