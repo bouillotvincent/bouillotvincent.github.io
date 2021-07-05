@@ -26,6 +26,9 @@ class Tortue:
 		else:
 			self.color = args
 			self.ctx.fillStyle = self.color
+
+	def pensize(self, width = None):
+		self.ctx.lineWidth = width
 			
 	def forward(self, L):
 		# self.ctx.beginPath()
