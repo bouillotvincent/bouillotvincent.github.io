@@ -9,14 +9,14 @@ class Tortue:
 		self.angle = angle
 		self.color = '#ff0000'
 		self.width = 1
-		self.style = '🐢'
+		self.style = 'classic'
 		self.ctx = context
 		self.__set_default()
 
-
 	def __set_default(self):
 		self.ctx.lineJoin = "miter"
-		self.ctx.lineCap = "square"
+		self.ctx.lineCap = "round"
+		# self.ctx.shape = self.shape(self.style)  # to be checked
 
 
 	def rad2deg(self, angle):
@@ -36,7 +36,13 @@ class Tortue:
 
 	def pensize(self, width = None):
 		self.ctx.lineWidth = width
-			
+
+	def shape(self, style = None):
+		dico_style = {'arrow' : '➡︎', 'turtle' : '🐢', \
+					  'circle' : '●', 'square' : '■', \
+					  'triangle' : '▶︎', 'classic': '➤'}
+		self.style = dico_style[style]
+
 	def forward(self, L):
 		self.ctx.beginPath()
 		self.ctx.moveTo(self.x, self.y)
