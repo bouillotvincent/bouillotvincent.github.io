@@ -46,7 +46,7 @@ class Turtle:
 		self.style = dico_style[style]
 
 	def forward(self, L):
-		self.state[f"""_{inspect.currentframe().f_code.co_name}"""] = [self.angle, L]
+		self.state[f"""self._{inspect.currentframe().f_code.co_name}"""] = [self.angle, L]
 		# self.ctx.beginPath()
 		# self.ctx.moveTo(self.x, self.y)
 		# self.ctx.lineTo(self.x + L * cos(self.deg2rad(self.angle)), \
