@@ -83,7 +83,7 @@ class Turtle:
 		# Draw current state
 		for command, vars in self.state.items() :
 			a, L = vars
-			command(L)
+			eval(command)(L)
 
 
 	def mainloop(self):
