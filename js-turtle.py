@@ -56,13 +56,14 @@ class Turtle:
 		# self.y += L * sin(self.deg2rad(self.angle))
 	
 	def _forward(self, L, current_L=1):
+		# if current_L < L:
 		self.ctx.beginPath()
-		while current_L < L:
-			self.ctx.moveTo(self.x, self.y)
-			self.ctx.lineTo(self.x + current_L * cos(self.deg2rad(self.angle)), \
-							self.y + current_L * sin(self.deg2rad(self.angle)))
-			self.ctx.stroke()
-			current_L += 1
+		self.ctx.moveTo(self.x, self.y)
+		self.ctx.lineTo(self.x + L * cos(self.deg2rad(self.angle)), \
+						self.y + L * sin(self.deg2rad(self.angle)))
+		self.ctx.stroke()
+			# return current_L + 1
+		# else :
 		self.x += L * cos(self.deg2rad(self.angle))
 		self.y += L * sin(self.deg2rad(self.angle))
 
