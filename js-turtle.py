@@ -1,4 +1,4 @@
-from js import document
+from js import document, window
 import inspect
 from math import cos, sin, pi
 
@@ -7,9 +7,10 @@ class Turtle:
 	def __init__(self, x = 0, y = 0, angle = 0):
 		self.x, self.y = x, y
 		self.angle = angle
-		self.color = '#ff0000'
-		self.width = 1
+		self.color = 'red'
+		self.width = 2
 		self.style = 'classic'
+		self.canvas = document.querySelector('canvas')
 		self.ctx = document.querySelector('canvas').getContext("2d")
 		self.__set_default()
 		self.state = {}
@@ -50,7 +51,9 @@ class Turtle:
 		self.ctx.lineTo(self.x + L * cos(self.deg2rad(self.angle)), \
 						self.y + L * sin(self.deg2rad(self.angle)))
 		self.ctx.stroke()
-	
+		self.x += L * cos(self.deg2rad(self.angle))
+		self.y += L * sin(self.deg2rad(self.angle))
+		
 	def fd(self, L):
 		self.forward(L)
 
@@ -59,6 +62,17 @@ class Turtle:
 
 	def left(self, angle):
 		self.angle -= angle
+
+	def tick(self):
+		# Clear canvas
+		self.ctx.clearRect(0, 0, self.canvas.width, self.canvas.height);
+
+	def mainloop(self):
+		self._animate()
+
+	def _animate(self):
+		self.tick()
+		window.requestAnimationFrame(self._animate())
 
 canvas = document.querySelector('canvas')
 canvas.setAttribute('width', 640)
