@@ -13,7 +13,7 @@ class Turtle:
 		self.canvas = document.querySelector('canvas')
 		self.ctx = document.querySelector('canvas').getContext("2d")
 		self.__set_default()
-		self.state = {}
+		self.state = []
 
 	def __set_default(self):
 		self.ctx.lineJoin = "miter"
@@ -46,14 +46,26 @@ class Turtle:
 		self.style = dico_style[style]
 
 	def forward(self, L):
+		self.state.append({f"""_{inspect.currentframe().f_code.co_name}""" :[self.x, self.y, self.angle, L]})
+		# self.ctx.beginPath()
+		# self.ctx.moveTo(self.x, self.y)
+		# self.ctx.lineTo(self.x + L * cos(self.deg2rad(self.angle)), \
+		# 				self.y + L * sin(self.deg2rad(self.angle)))
+		# self.ctx.stroke()
+		# self.x += L * cos(self.deg2rad(self.angle))
+		# self.y += L * sin(self.deg2rad(self.angle))
+	
+	def _forward(self, L, current_L=1):
 		self.ctx.beginPath()
-		self.ctx.moveTo(self.x, self.y)
-		self.ctx.lineTo(self.x + L * cos(self.deg2rad(self.angle)), \
-						self.y + L * sin(self.deg2rad(self.angle)))
-		self.ctx.stroke()
+		while current_L < L:
+			self.ctx.moveTo(self.x, self.y)
+			self.ctx.lineTo(self.x + current_L * cos(self.deg2rad(self.angle)), \
+							self.y + current_L * sin(self.deg2rad(self.angle)))
+			self.ctx.stroke()
+			current_L += 1
 		self.x += L * cos(self.deg2rad(self.angle))
 		self.y += L * sin(self.deg2rad(self.angle))
-		
+
 	def fd(self, L):
 		self.forward(L)
 
@@ -65,7 +77,13 @@ class Turtle:
 
 	def tick(self):
 		# Clear canvas
-		self.ctx.clearRect(0, 0, self.canvas.width, self.canvas.height);
+		self.ctx.clearRect(0, 0, self.canvas.width, self.canvas.height)
+
+		# Draw current state
+		for command in self.state :
+			fct = command.keys()
+			X, Y, A, L = command[fct]
+			fct(L)
 
 	def mainloop(self):
 		self._animate()
