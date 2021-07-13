@@ -49,9 +49,9 @@ class Turtle:
 
 	def forward(self, L):
 		self.ctx.beginPath()
-		self.ctx.moveTo(self.x, self.y)
 		i = 1
 		while i < L :
+			self.ctx.moveTo(self.x, self.y)
 			self.ctx.lineTo(self.x + cos(self.deg2rad(self.angle)), \
 						self.y + sin(self.deg2rad(self.angle)))			
 			self.x = self.x + cos(self.deg2rad(self.angle))
