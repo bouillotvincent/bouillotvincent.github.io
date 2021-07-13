@@ -82,7 +82,7 @@ class Turtle:
 
 		# Draw current state
 		for command in self.state :
-			fct = command.keys()
+			fct = list(command.keys())
 			X, Y, A, L = command[fct]
 			fct(L)
 
