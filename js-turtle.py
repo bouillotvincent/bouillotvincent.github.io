@@ -82,6 +82,7 @@ class Turtle:
 
 		# Draw current state
 		for command, vars in self.state :
+			print(vars)
 			a, L = vars
 			command(L)
 
