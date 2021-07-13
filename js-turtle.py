@@ -1,8 +1,8 @@
 from js import document
 import inspect
 from math import cos, sin, pi
-
-class Tortue:
+import time
+class Turtle:
 
 	def __init__(self, context, x = 0, y = 0, angle = 0):
 		self.x, self.y = x, y
@@ -60,6 +60,13 @@ class Tortue:
 
 	def left(self, angle):
 		self.angle -= angle
+	
+	def mainloop(self, L, current_L = 0):
+		if current_L != L:
+			current_L += 1
+			self.forward(current_L)
+			time.sleep(100)
+			self.mainloop(current_L, L)
 
 canvas = document.querySelector('canvas')
 canvas.setAttribute('width', 640)
@@ -94,4 +101,4 @@ canvas.addEventListener('mousemove', onmousemove)
 canvas.addEventListener('mousedown', onmousedown)
 canvas.addEventListener('mouseup', onmouseup)
 
-fred = Tortue(context)
+fred = Turtle(context)
