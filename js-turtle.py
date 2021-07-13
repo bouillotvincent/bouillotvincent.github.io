@@ -57,6 +57,7 @@ class Turtle:
 			self.x = self.x + cos(self.deg2rad(self.angle))
 			self.y = self.y + sin(self.deg2rad(self.angle))
 			self.ctx.stroke()
+			time.pause(100)
 			i+=1
 	
 	def fd(self, L):
