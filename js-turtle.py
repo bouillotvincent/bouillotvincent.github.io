@@ -81,8 +81,7 @@ class Turtle:
 		self.ctx.clearRect(0, 0, self.canvas.width, self.canvas.height)
 
 		# Draw current state
-		for command, vars in self.state :
-			print(vars)
+		for command, vars in self.state.items() :
 			a, L = vars
 			command(L)
 
