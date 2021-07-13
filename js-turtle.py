@@ -1,16 +1,16 @@
 from js import document
 import inspect
 from math import cos, sin, pi
-import time
+
 class Turtle:
 
-	def __init__(self, context, x = 0, y = 0, angle = 0):
+	def __init__(self, x = 0, y = 0, angle = 0):
 		self.x, self.y = x, y
 		self.angle = angle
 		self.color = '#ff0000'
 		self.width = 1
 		self.style = 'classic'
-		self.ctx = context
+		self.ctx = document.querySelector('canvas').getContext("2d")
 		self.__set_default()
 		self.state = {}
 
@@ -64,8 +64,7 @@ canvas = document.querySelector('canvas')
 canvas.setAttribute('width', 640)
 canvas.setAttribute('height', 480)
 context = canvas.getContext("2d")
-context.strokeStyle = "red"
-context.lineWidth = 5
+
 pen = False
 lastPoint = (0, 0)
 
@@ -93,4 +92,4 @@ canvas.addEventListener('mousemove', onmousemove)
 canvas.addEventListener('mousedown', onmousedown)
 canvas.addEventListener('mouseup', onmouseup)
 
-fred = Turtle(context)
+fred = Turtle()
