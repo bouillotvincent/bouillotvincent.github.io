@@ -44,21 +44,12 @@ class Turtle:
 					  'triangle' : '▶︎', 'classic': '➤'}
 		self.style = dico_style[style]
 
-	# def forward(self, L):
-	# 	self.state.append((self._forward, self.x, self.y, self.angle, L))
-
 	def forward(self, L):
 		self.ctx.beginPath()
-		i = 1
-		while i < L :
-			self.ctx.moveTo(self.x, self.y)
-			self.ctx.lineTo(self.x + cos(self.deg2rad(self.angle)), \
-						self.y + sin(self.deg2rad(self.angle)))			
-			self.x = self.x + cos(self.deg2rad(self.angle))
-			self.y = self.y + sin(self.deg2rad(self.angle))
-			self.ctx.stroke()
-			time.sleep(100)
-			i+=1
+		self.ctx.moveTo(self.x, self.y)
+		self.ctx.lineTo(self.x + L * cos(self.deg2rad(self.angle)), \
+						self.y + L * sin(self.deg2rad(self.angle)))
+		self.ctx.stroke()
 	
 	def fd(self, L):
 		self.forward(L)
@@ -68,13 +59,6 @@ class Turtle:
 
 	def left(self, angle):
 		self.angle -= angle
-	
-	# def mainloop(self, L, current_L = 0):
-	# 	if current_L != L:
-	# 		current_L += 1
-	# 		self.forward(current_L)
-	# 		time.sleep(100)
-	# 		self.mainloop(current_L, L)
 
 canvas = document.querySelector('canvas')
 canvas.setAttribute('width', 640)
